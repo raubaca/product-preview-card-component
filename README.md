@@ -29,8 +29,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Frontend Mentor]()
-- Live Site URL: [GitHub Pages]()
+- Solution URL: [Frontend Mentor](https://www.frontendmentor.io/solutions/product-preview-card-scss-CuYhuRzdpf)
+- Live Site URL: [GitHub Pages](https://raubaca.github.io/product-preview-card-component/)
 
 ## My process
 
