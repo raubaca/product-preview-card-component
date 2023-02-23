@@ -1,0 +1,159 @@
+// Variables
+
+$dark-cyan: hsl(158, 36%, 37%); // Duplicated to apply darken() on button:hover
+
+:root {
+  --dark-cyan: hsl(158, 36%, 37%);
+  --cream: hsl(30, 38%, 92%);
+  --very-dark-blue: hsl(212, 21%, 14%);
+  --dark-grayish-blue: hsl(228, 12%, 48%);
+  --white: hsl(0, 0%, 100%);
+
+  --font-family-montserrat: Montserrat, sans-serif;
+  --font-family-fraunces: Fraunces, serif;
+
+  --font-size: 1.4rem;
+  --font-size-lg: 3.2rem;
+
+  --max-width: 34.3rem;
+  --content-padding: 2.4rem;
+}
+
+// Reset and basics
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  display: grid;
+  place-content: center;
+  min-height: 100vh;
+  font-size: var(--font-size);
+  font-family: var(--font-family-montserrat);
+  font-weight: 500;
+  line-height: 1.7;
+  color: var(--dark-grayish-blue);
+  background-color: var(--cream);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+picture,
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  appearance: none;
+  border: 0;
+  outline: 0;
+  font: inherit;
+  cursor: pointer;
+}
+
+// Title and price style
+
+%text-bold {
+  font-family: var(--font-family-fraunces);
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  line-height: 1;
+}
+
+// Card and button styles
+
+.product {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+  max-width: var(--max-width);
+  background-color: var(--white);
+  border-radius: 1rem;
+  overflow: hidden;
+  &__info {
+    display: grid;
+    gap: 1.6rem;
+    padding: var(--content-padding);
+  }
+  &__category {
+    text-transform: uppercase;
+    letter-spacing: 0.55rem;
+    margin-top: -0.4rem;
+    margin-bottom: -0.8rem;
+  }
+  &__name {
+    @extend %text-bold;
+    font-size: var(--font-size-lg);
+    color: var(--very-dark-blue);
+  }
+  &__price {
+    display: flex;
+    align-items: center;
+    gap: 1.6rem;
+    margin: 0.4rem 0;
+    &-new {
+      @extend %text-bold;
+      color: var(--dark-cyan);
+    }
+  }
+}
+
+.button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: auto;
+  height: 4.8rem;
+  font-weight: 700;
+  color: var(--white);
+  background-color: var(--dark-cyan);
+  border-radius: 1rem;
+  transition: background-color 0.4s ease-in;
+  &:hover {
+    background-color: darken($dark-cyan, 10);
+    animation: pop 0.4s ease-in-out;
+  }
+  &::before {
+    content: '';
+    display: block;
+    width: 1.6rem;
+    height: 1.6rem;
+    background: url(../images/icon-cart.svg);
+  }
+}
+
+// Desktop adjustments
+
+@media screen and (min-width: 64rem) {
+  body {
+    --max-width: 60rem;
+    --content-padding: 3.2rem;
+  }
+  .product {
+    &__category {
+      margin-bottom: -0.4rem;
+    }
+  }
+}
+
+// Simple animation
+
+@keyframes pop {
+  50% {
+    transform: scale(1.1);
+  }
+  75% {
+    transform: scale(0.9);
+  }
+}
